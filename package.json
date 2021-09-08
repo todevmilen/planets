@@ -27,6 +27,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "eslint": "^6.8.0",
     "eventemitter3": "^4.0.7",
     "fetch": "^1.1.0"

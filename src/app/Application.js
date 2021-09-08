@@ -1,5 +1,9 @@
 import config from '../config';
 import EventEmitter from 'eventemitter3';
+ 
+
+
+ 
 
 const EVENTS = {
   APP_READY: 'app_ready',
@@ -9,12 +13,24 @@ const EVENTS = {
  * App entry point.
  * All configurations are described in src/config.js
  */
+
+
 export default class Application extends EventEmitter {
-  constructor() {
+  constructor(data) {
     super();
 
+    fetch("https://swapi.dev/api/planets/")
+    .then(response => response.json())
+    .then(data => this.data.count = data.count)
+    .then(() => console.log(this.data.count));
+  
+    
+
     this.config = config;
-    this.data = {};
+    this.data = {
+      count: 0,
+      planets: []
+    };
 
     this.init();
   }
@@ -36,3 +52,6 @@ export default class Application extends EventEmitter {
   }
 }
 
+
+
+ 
