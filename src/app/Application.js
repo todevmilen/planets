@@ -19,7 +19,7 @@ export default class Application extends EventEmitter {
   constructor(data) {
     super();
 
-    fetch("https://swapi.dev/api/planets/")
+    fetch("https://swapi.boom.dev/api/planets/")
     .then(response => response.json())
     .then(data => this.data.count = data.count)
     .then(() => console.log(this.data.count));
