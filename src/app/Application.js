@@ -16,21 +16,11 @@ export default class Application extends EventEmitter {
     
       const url = "https://swapi.boom.dev/api/planets/";
 
-
-    async function getData(url) {
-      const response = await fetch(url);
-
-      // Storing data in form of JSON
-      let data = await response.json();
-      let count = data.count;
-    }
-
-    getData(url);
-
     this.config = config;
-    this.data = {};
-
     this.init();
+    this.data = {
+      count: 0,
+    };
   }
 
   static get events() {
@@ -44,7 +34,14 @@ export default class Application extends EventEmitter {
    * The APP_READY event should be emitted at the end of this method.
    */
   async init() {
+    const url = "https://swapi.boom.dev/api/planets/";
     // Initiate classes and wait for async operations here.
+    const response = await fetch(url);
+
+    // Storing data in form of JSON
+    let data = await response.json();
+    let count = data.count;
+    this.data.count = count;
 
     this.emit(Application.events.APP_READY);
   }
