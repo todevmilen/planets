@@ -13,6 +13,8 @@ const EVENTS = {
 export default class Application extends EventEmitter {
   constructor() {
     super();
+    
+      const url = "https://swapi.boom.dev/api/planets/";
 
     this.config = config;
     this.init();
@@ -44,3 +46,4 @@ export default class Application extends EventEmitter {
     this.emit(Application.events.APP_READY);
   }
 }
+
