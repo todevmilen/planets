@@ -46,7 +46,7 @@ export default class Application extends EventEmitter {
       this.data.count = count;
       this.data.planets.push(...planets);
 
-      console.log(this.data);
+
     } while (url);
 
     this.emit(Application.events.APP_READY);
