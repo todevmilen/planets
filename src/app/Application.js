@@ -1,12 +1,8 @@
-import config from '../config';
-import EventEmitter from 'eventemitter3';
- 
-
-
- 
+import config from "../config";
+import EventEmitter from "eventemitter3";
 
 const EVENTS = {
-  APP_READY: 'app_ready',
+  APP_READY: "app_ready",
 };
 
 /**
@@ -14,23 +10,25 @@ const EVENTS = {
  * All configurations are described in src/config.js
  */
 
-
 export default class Application extends EventEmitter {
-  constructor(data) {
+  constructor() {
     super();
-
-    fetch("https://swapi.boom.dev/api/planets/")
-    .then(response => response.json())
-    .then(data => this.data.count = data.count)
-    .then(() => console.log(this.data.count));
-  
     
+      const url = "https://swapi.boom.dev/api/planets/";
+
+
+    async function getData(url) {
+      const response = await fetch(url);
+
+      // Storing data in form of JSON
+      let data = await response.json();
+      let count = data.count;
+    }
+
+    getData(url);
 
     this.config = config;
-    this.data = {
-      count: 0,
-      planets: []
-    };
+    this.data = {};
 
     this.init();
   }
@@ -52,6 +50,3 @@ export default class Application extends EventEmitter {
   }
 }
 
-
-
- 
