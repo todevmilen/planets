@@ -13,13 +13,9 @@ const EVENTS = {
 export default class Application extends EventEmitter {
   constructor() {
     super();
+    
+      const url = "https://swapi.boom.dev/api/planets/";
 
-    const url = "https://swapi.boom.dev/api/planets/";
-
-    // fetch("https://swapi.dev/api/planets/")
-    //     .then(response => response.json())
-    //     .then(data => count = data.count)
-    //     .then(() => console.log(count));
 
     async function getData(url) {
       const response = await fetch(url);
@@ -27,19 +23,6 @@ export default class Application extends EventEmitter {
       // Storing data in form of JSON
       let data = await response.json();
       let count = data.count;
-
-      // let allData = [];
-      // let morePagesAvailable = true;
-      // let currentPage = 4;
-
-      // while (morePagesAvailable) {
-      //   currentPage++;
-      //   const response = await fetch(
-      //     `https://swapi.dev/api/planets/?page=${currentPage}`
-      //   );
-      //   let { test, total_pages } = await response.json();
-      //   morePagesAvailable = currentPage === null;
-      // }
     }
 
     getData(url);
@@ -66,3 +49,4 @@ export default class Application extends EventEmitter {
     this.emit(Application.events.APP_READY);
   }
 }
+
